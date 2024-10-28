@@ -10,5 +10,3 @@ COPY ./traccar.xml /opt/traccar/conf/traccar.xml
 
 # Expose the necessary ports
 EXPOSE 8082
-EXPOSE 5000-5150/udp
-
