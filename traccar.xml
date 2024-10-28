@@ -8,9 +8,23 @@
     <entry key='database.url'>jdbc:postgresql://dpg-csfhrupu0jms73fg6h50-a/traccar_qu7s</entry>
     <entry key='database.user'>traccar_qu7s_user</entry>
     <entry key='database.password'>JBzFC28EXup3wbVEXIwkhoQkqIRyYbDw</entry>
-    <entry key='notificator.types'>traccar,...</entry>
+    <entry key='notificator.types'>traccar,telegram</entry>
+    
+    <!-- push notificator key -->
     <entry key='notificator.traccar.key'>eyJkYXRhIjo0Mjk1MX0uSGRXbExTeHNKNHAxdTJqRGdBRWJMRmVFc3hiN2JvTDZoNjM3eHdzQ25CZw</entry>
-    <entry key='notificator.types'>telegram,...</entry>
+    
+    <!-- telegram keys -->
     <entry key='notificator.telegram.key'>7996145901:AAH1t6V9TjPnAUUVYFDnI-AHOSS2uH3nQ_M</entry>
     <entry key='notificator.telegram.chatId'>860982868</entry>
+
+
+    
+    <!-- Email configuration-file -->
+    <entry key='mail.smtp.host'>smtp.gmail.com</entry>
+    <entry key='mail.smtp.port'>465</entry>
+    <entry key='mail.smtp.ssl.enable'>true</entry>
+    <entry key='mail.smtp.from'>ritik.s10120@gmail.com</entry>
+    <entry key='mail.smtp.auth'>true</entry>
+    <entry key='mail.smtp.username'>ritik.s10120@gmail.com</entry>
+    <entry key='mail.smtp.password'>biiq pjqt zlwf djag</entry>
 </properties>
