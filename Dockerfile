@@ -1,19 +1,14 @@
-# Start from the latest Traccar image
+# Use the latest Traccar image as the base
 FROM traccar/traccar:latest
 
-# Set up the hostname
+# Set the container's hostname
 ENV HOSTNAME=traccar
+
+# Copy configuration files
+COPY ./logs /opt/traccar/logs
+COPY ./traccar.xml /opt/traccar/conf/traccar.xml
 
 # Expose the necessary ports
 EXPOSE 8082
+EXPOSE 5000-5150/udp
 
-# Copy necessary configuration and log files
-# Assuming the traccar.xml configuration file and logs folder are located at /opt/traccar on your host
-COPY ./traccar.xml ./conf/traccar.xml
-VOLUME ./logs
-
-# Define the entry point
-ENTRYPOINT ["./traccar"]
-
-# Set container to restart unless stopped
-LABEL restart_policy="unless-stopped"
