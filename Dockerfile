@@ -16,5 +16,4 @@ EXPOSE 8082
 EXPOSE 5000-5150
 EXPOSE 5000-5150/udp
 
-# Command to run the Traccar application (if needed)
-CMD ["sh", "-c", "/opt/traccar/bin/traccar.xml"]
+
