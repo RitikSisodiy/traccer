@@ -1,12 +1,20 @@
-# Use the latest Traccar image as the base
+# Dockerfile
 FROM traccar/traccar:latest
 
-# Set the container's hostname
-ENV HOSTNAME=traccar
+# Set the environment variables if needed
+ENV TRACCAR_LOGS=/opt/traccar/logs
+ENV TRACCAR_CONF=/opt/traccar/conf/traccar.xml
 
-# Copy configuration files
-COPY ./logs /opt/traccar/logs
-COPY ./traccar.xml /opt/traccar/conf/traccar.xml
+# Copy the custom configuration file into the image (if you have one)
+COPY traccar.xml $TRACCAR_CONF
 
-# Expose the necessary ports
+# Create necessary directories (if they don't exist)
+RUN mkdir -p $TRACCAR_LOGS
+
+# Expose ports
 EXPOSE 8082
+EXPOSE 5000-5150
+EXPOSE 5000-5150/udp
+
+# Command to run the Traccar application (if needed)
+CMD ["sh", "-c", "/opt/traccar/bin/traccar.xml"]
