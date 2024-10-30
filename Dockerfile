@@ -1,24 +1,21 @@
+# Dockerfile
+FROM traccar/traccar:latest
+# Set up the hostname
+ENV HOSTNAME=traccar
+# Set the environment variables if needed
+ENV TRACCAR_LOGS=/opt/traccar/logs
+ENV TRACCAR_CONF=/opt/traccar/conf/traccar.xml
 
 # Copy the custom configuration file into the image (if you have one)
+COPY traccar.xml $TRACCAR_CONF
 
-FROM alpine:3.20
+# Create necessary directories (if they don't exist)
+RUN mkdir -p $TRACCAR_LOGS
+# Set container to restart unless stopped
+LABEL restart_policy="unless-stopped"
+# Expose ports
+EXPOSE 8082
+EXPOSE 5000-5150
+EXPOSE 5000-5150/udp
 
-ENV TRACCAR_VERSION 6.5
-
-WORKDIR /opt/traccar
-
-COPY ./traccar.xml /opt/traccar/conf/traccar.xml
- 
-RUN set -ex; \
-    apk add --no-cache --no-progress \
-      openjdk17-jre-headless \
-      wget; \
-    wget -qO /tmp/traccar.zip https://github.com/traccar/traccar/releases/download/v$TRACCAR_VERSION/traccar-other-$TRACCAR_VERSION.zip; \
-    unzip -qo /tmp/traccar.zip -d /opt/traccar; \
-    rm /tmp/traccar.zip; \
-    apk del wget
-
-ENTRYPOINT ["java", "-Xms1g", "-Xmx1g", "-Djava.net.preferIPv4Stack=true"]
-
-CMD ["-jar", "tracker-server.jar", "conf/traccar.xml"]
 
