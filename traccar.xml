@@ -5,9 +5,9 @@
     <!-- Documentation: https://www.traccar.org/configuration-file/ -->
 
     <entry key='database.driver'>org.postgresql.Driver</entry>
-    <entry key='database.url'>jdbc:postgresql://dpg-csfhrupu0jms73fg6h50-a/traccar_qu7s</entry>
-    <entry key='database.user'>traccar_qu7s_user</entry>
-    <entry key='database.password'>JBzFC28EXup3wbVEXIwkhoQkqIRyYbDw</entry>
+    <entry key='database.url'>jdbc:postgresql://dpg-csgroc08fa8c7392fhrg-a/treccar</entry>
+    <entry key='database.user'>treccar_user</entry>
+    <entry key='database.password'>bjaTNWNkiDapiqtRocbfKcI0m74aV30L</entry>
     <entry key='notificator.types'>traccar,telegram,web,mail</entry>
 
     <!-- push notificator key -->
