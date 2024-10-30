@@ -22,8 +22,6 @@ RUN set -ex; \
 COPY ./traccar.xml /opt/traccar/conf/traccar_template.xml
 
 
-
-ENTRYPOINT ["sh", "-c", "envsubst < /opt/traccar/conf/traccar_template.xml > /opt/traccar/conf/traccar.xml && exec java -Xms1g -Xmx1g -Djava.net.preferIPv4Stack=true -jar /path/to/your/jarfile.jar"]
-
+ENTRYPOINT ["/bin/sh", "-c", "envsubst < /opt/traccar/conf/traccar_template.xml > /opt/traccar/conf/traccar.xml && exec java -Xms1g -Xmx1g -Djava.net.preferIPv4Stack=true"]
 CMD ["-jar", "tracker-server.jar", "/opt/traccar/conf/traccar.xml"]
 
