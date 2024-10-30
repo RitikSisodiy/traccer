@@ -12,13 +12,17 @@ WORKDIR /opt/traccar
 RUN set -ex; \
     apk add --no-cache --no-progress \
       openjdk17-jre-headless \
-      wget; \
+      wget \
+      gettext; \
     wget -qO /tmp/traccar.zip https://github.com/traccar/traccar/releases/download/v$TRACCAR_VERSION/traccar-other-$TRACCAR_VERSION.zip; \
     unzip -qo /tmp/traccar.zip -d /opt/traccar; \
     rm /tmp/traccar.zip; \
     apk del wget
 
-COPY ./traccar.xml /opt/traccar/conf/traccar.xml
+COPY ./traccar.xml /opt/traccar/conf/traccar_template.xml
+
+
+RUN envsubst < /opt/traccar/conf/traccar_template.xml > /opt/traccar/conf/traccar.xml
 
 ENTRYPOINT ["java", "-Xms1g", "-Xmx1g", "-Djava.net.preferIPv4Stack=true"]
 
