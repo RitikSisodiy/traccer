@@ -7,7 +7,7 @@ ENV TRACCAR_VERSION 6.5
 
 WORKDIR /opt/traccar
 
-COPY ./traccar.xml /opt/traccar/conf/traccar.xml
+
  
 RUN set -ex; \
     apk add --no-cache --no-progress \
@@ -17,6 +17,8 @@ RUN set -ex; \
     unzip -qo /tmp/traccar.zip -d /opt/traccar; \
     rm /tmp/traccar.zip; \
     apk del wget
+
+COPY ./traccar.xml /opt/traccar/conf/traccar.xml
 
 ENTRYPOINT ["java", "-Xms1g", "-Xmx1g", "-Djava.net.preferIPv4Stack=true"]
 
